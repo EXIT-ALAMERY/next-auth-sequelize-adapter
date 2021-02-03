@@ -1,13 +1,13 @@
 # Sequelize Adapter For Next-Auth
 
-[![GitHub issues](https://img.shields.io/github/issues/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/issues) [![GitHub forks](https://img.shields.io/github/forks/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/network) [![GitHub stars](https://img.shields.io/github/stars/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/stargazers) [![GitHub license](https://img.shields.io/github/license/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/issues) [![GitHub forks](https://img.shields.io/github/forks/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/network) [![GitHub stars](https://img.shields.io/github/stars/EXIT-ALAMERY/next-auth-sequelize-adapter)](https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter/stargazers)
 
 ## Getting Started
 To get stated simply clone the example or use the [sequelize-cli](https://www.npmjs.com/package/sequelize-cli) and generate the folder structure for Sequelize ORM.
-###Prerequisites
+### Prerequisites
 You must install sequelize in your NextJS/Next-Auth project to use this adapter. Learn More about using custom adapters with Next-Auth [here](https://next-auth.js.org/schemas/adapters).
 
-###Installation
+### Installation
 Install the package using npm:
 
 `$ npm install next-auth-sequelize-adapter --save`
@@ -16,10 +16,10 @@ If you are using yarn then type:
 
 `$ yarn add next-auth-sequelize-adapter`
 
-###Usage
+### Usage
 After generating the sequelize folder structure with the `$ sequelize init` command, edit the **models/index.js** and replace all code with:
 
-####models/index.js　
+#### models/index.js　
 
 ```javascript
 'use strict';
@@ -60,7 +60,7 @@ export default db;
 ```
 Then edit the **pages/api/auth/[...nextauth].js** and specify the sequelize adapter instead of the default TypeORM adapter.
 
-####pages/api/auth/[...nextauth].js
+#### pages/api/auth/[...nextauth].js
 ```javascript
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers';
@@ -90,11 +90,11 @@ export default (req, res) => NextAuth(req, res, options);
 
 Now this is enough to get next-auth working with sequelize ORM but that is not always the case and the default models, most likely the user model needs to be extended with fields such as a **phone number** or with a relationship to another table such as **posts**.
 
-###Extending Default Models
+### Extending Default Models
 
 To extend a default model, you first need to create a new model either manually or with sequelize-cli, then edit it so that we can have all the default properties such as **name, email, and image**, which are required by next-auth, along with custom properties such as a **phone number**.
 
-####models/user_extended.js
+#### models/user_extended.js
 ```javascript
 'use strict';
 
@@ -133,7 +133,7 @@ export default extendedUserModel;
 
 Then edit the **models/index.js** so that next-auth uses the extended model instead of the default model:
 
-####models/index.js　
+#### models/index.js　
 
 ```javascript
 'use strict';
@@ -180,11 +180,11 @@ Object.keys(db).forEach(modelName => {
 export default db;
 ```
 
-###Creating New Models
+### Creating New Models
 
 Creating models other than the default next-auth models is very simple. Just create the model and the migration with sequelize-cli and include it in the ** models/index.js** file using the ES6 import syntax and use it normally in your project.
 
-###Extending The Session Object
+### Extending The Session Object
 
 To extend the session object and include custom properties like the **phone number** of a user, check out the next-auth documentation [here](https://next-auth.js.org/configuration/callbacks#session-callback)
 
