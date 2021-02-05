@@ -65,9 +65,9 @@ Then edit the **pages/api/auth/[...nextauth].js** and specify the sequelize adap
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers';
 
-// import the local db object and the sequelizeAdapter
+// import the local db object and the Adapter
 import db from '../../../db/models';
-import { sequelizeAdapter } from 'next-auth-sequelize-adapter';
+import { Adapter } from 'next-auth-sequelize-adapter';
 
 const options = {
   // specify all the OAuth providers here
@@ -82,7 +82,7 @@ const options = {
   database: process.env.DATABASE_CONNECTION_STRING,
 
   // specify that next-auth should use the sequelize adapter instead of the default TypeORM adapter and pass the db instance as models
-  adapter: sequelizeAdapter.Adapter({ models: db })
+  adapter: Adapter.Adapter({ models: db })
 };
 
 export default (req, res) => NextAuth(req, res, options);
@@ -182,7 +182,7 @@ export default db;
 
 ### Creating New Models
 
-Creating models other than the default next-auth models is very simple. Just create the model and the migration with sequelize-cli and include it in the ** models/index.js** file using the ES6 import syntax and use it normally in your project.
+Creating models other than the default next-auth models is very simple. Just create the model and the migration with sequelize-cli and include it in the **models/index.js** file using the ES6 import syntax and use it normally in your project.
 
 ### Extending The Session Object
 

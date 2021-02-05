@@ -1,9 +1,9 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers';
 
-// import the local db object and the sequelizeAdapter
+// import the local db object and the Adapter
 import db from '../../../db/models';
-import { sequelizeAdapter } from 'next-auth-sequelize-adapter';
+import { Adapter } from 'next-auth-sequelize-adapter';
 
 const options = {
   // specify all the OAuth providers here
@@ -18,7 +18,7 @@ const options = {
   database: process.env.DATABASE_CONNECTION_STRING,
 
   // specify that next-auth should use the sequelize adapter instead of the default TypeORM adapter and pass the db instance as models
-  adapter: sequelizeAdapter.Adapter({ models: db })
+  adapter: Adapter.Adapter({ models: db })
 };
 
 export default (req, res) => NextAuth(req, res, options);
