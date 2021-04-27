@@ -1,44 +1,46 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable("users", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       email: {
         type: DataTypes.STRING,
-        unique: true
+        unique: true,
       },
       phoneNumber: {
         type: DataTypes.STRING,
         unique: true,
-        field: 'phone_number'
+        field: "phone_number",
       },
       emailVerified: {
         type: DataTypes.DATE,
-        field: 'email_verified',
+        field: "email_verified",
       },
       image: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        field: "created_at",
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
-      }
+        type: DataTypes.DATE,
+        field: "updated_at",
+      },
     });
   },
   down: async (queryInterface, DataTypes) => {
-    await queryInterface.dropTable('users');
-  }
+    await queryInterface.dropTable("users");
+  },
 };
