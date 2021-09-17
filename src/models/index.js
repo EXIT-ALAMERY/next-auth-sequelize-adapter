@@ -76,7 +76,6 @@ export const verificationRequestModel = (Model, sequelize, Sequelize) => {
   }
   VerificationRequest.init(verificationRequestSchema(Sequelize), {
     sequelize,
-    tableName: "verification_requests",
     modelName: "VerificationRequest",
   });
 
