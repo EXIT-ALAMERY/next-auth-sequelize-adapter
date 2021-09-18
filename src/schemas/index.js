@@ -1,12 +1,18 @@
 "use strict";
 
 export const accountSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   compoundId: {
     type: DataTypes.STRING,
     unique: true,
   },
   userId: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   providerType: {
     type: DataTypes.STRING,
@@ -35,8 +41,14 @@ export const accountSchema = (DataTypes) => ({
 });
 
 export const sessionSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   userId: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   expires: {
     type: DataTypes.DATE,
@@ -58,6 +70,12 @@ export const sessionSchema = (DataTypes) => ({
 });
 
 export const userSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   name: DataTypes.STRING,
   email: {
     type: DataTypes.STRING,
@@ -76,6 +94,12 @@ export const userSchema = (DataTypes) => ({
 });
 
 export const verificationRequestSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   identitifer: DataTypes.STRING,
   token: {
     type: DataTypes.STRING,

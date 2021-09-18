@@ -34,6 +34,7 @@ export const accountModel = (Model, sequelize, Sequelize) => {
       },
     ],
   });
+  
 
   return Account;
 };
