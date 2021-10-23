@@ -34,6 +34,7 @@ export const accountModel = (Model, sequelize, Sequelize) => {
       },
     ],
   });
+  
 
   return Account;
 };
@@ -76,7 +77,6 @@ export const verificationRequestModel = (Model, sequelize, Sequelize) => {
   }
   VerificationRequest.init(verificationRequestSchema(Sequelize), {
     sequelize,
-    tableName: "verification_requests",
     modelName: "VerificationRequest",
   });
 

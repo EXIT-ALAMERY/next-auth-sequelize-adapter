@@ -1,78 +1,81 @@
 "use strict";
 
 export const accountSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   compoundId: {
     type: DataTypes.STRING,
-    field: "compound_id",
     unique: true,
   },
   userId: {
-    type: DataTypes.INTEGER,
-    field: "user_id",
+    type: DataTypes.STRING,
   },
   providerType: {
     type: DataTypes.STRING,
-    field: "provider_type",
   },
   providerId: {
     type: DataTypes.STRING,
-    field: "provider_id",
   },
   providerAccountId: {
     type: DataTypes.STRING,
-    field: "provider_account_id",
   },
   refreshToken: {
     type: DataTypes.STRING,
-    field: "refresh_token",
   },
   accessToken: {
     type: DataTypes.STRING,
-    field: "access_token",
   },
   accessTokenExpires: {
     type: DataTypes.DATE,
-    field: "access_token_expires",
   },
   createdAt: {
     type: DataTypes.DATE,
-    field: "created_at",
   },
   updatedAt: {
     type: DataTypes.DATE,
-    field: "updated_at",
   },
 });
 
 export const sessionSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   userId: {
-    type: DataTypes.INTEGER,
-    field: "user_id",
+    type: DataTypes.STRING,
   },
   expires: {
     type: DataTypes.DATE,
   },
   sessionToken: {
     type: DataTypes.STRING,
-    field: "session_token",
     unique: true,
   },
   accessToken: {
     type: DataTypes.STRING,
-    field: "access_token",
     unique: true,
   },
   createdAt: {
     type: DataTypes.DATE,
-    field: "created_at",
   },
   updatedAt: {
     type: DataTypes.DATE,
-    field: "updated_at",
   },
 });
 
 export const userSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   name: DataTypes.STRING,
   email: {
     type: DataTypes.STRING,
@@ -80,20 +83,23 @@ export const userSchema = (DataTypes) => ({
   },
   emailVerified: {
     type: DataTypes.DATE,
-    field: "email_verified",
   },
   image: DataTypes.STRING,
   createdAt: {
     type: DataTypes.DATE,
-    field: "created_at",
   },
   updatedAt: {
     type: DataTypes.DATE,
-    field: "updated_at",
   },
 });
 
 export const verificationRequestSchema = (DataTypes) => ({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
   identitifer: DataTypes.STRING,
   token: {
     type: DataTypes.STRING,
@@ -102,10 +108,8 @@ export const verificationRequestSchema = (DataTypes) => ({
   expires: DataTypes.DATE,
   createdAt: {
     type: DataTypes.DATE,
-    field: "created_at",
   },
   updatedAt: {
     type: DataTypes.DATE,
-    field: "updated_at",
   },
 });

@@ -5,6 +5,10 @@ import { createHash, randomBytes } from "crypto";
 import { CreateUserError } from "./lib/errors";
 import logger from "./lib/logger";
 
+import { v4 as uuidv4 } from 'uuid';
+
+
+
 const Adapter = (config) => {
   const { models } = config;
 
@@ -38,9 +42,11 @@ const Adapter = (config) => {
 
     async function createUser(profile) {
       debug("CREATE_USER", profile);
+      console.log(profile, uuidv4());
 
       try {
         return models.User.create({
+          id: uuidv4(),
           name: profile.name,
           email: profile.email,
           image: profile.image,
@@ -148,6 +154,7 @@ const Adapter = (config) => {
       );
       try {
         return models.Account.create({
+          id: uuidv4(),
           accessToken,
           refreshToken,
           compoundId: getCompoundId(providerId, providerAccountId),
@@ -186,6 +193,7 @@ const Adapter = (config) => {
         }
 
         return models.Session.create({
+          id: uuidv4(),
           expires,
           userId: user.id,
           sessionToken: randomBytes(32).toString("hex"),
@@ -307,6 +315,7 @@ const Adapter = (config) => {
 
         // Save to database
         const verificationRequest = await models.VerificationRequest.create({
+          id: uuidv4(),
           identifier,
           token: hashedToken,
           expires,

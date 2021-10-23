@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/EXIT-ALAMERY/next-auth-sequelize-adapter#readme",
   "dependencies": {
+    "uuid": "8.3.2",
     "core-js": "^3.11.0",
     "regenerator-runtime": "^0.13.7"
   },
